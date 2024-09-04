@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .page-title {
+            text-align: center;
+            color: #333;
+            margin: 40px 0;
+            font-size: 2.5em;
+        }
+        .carousel-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .card {
+            flex: 0 0 calc(100% - 40px);
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 500px; /* Increased height for a more rectangular shape */
+        }
+        .card-image {
+            width: 100%;
+            height: 300px; /* Increased height for the image */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+        .card-description {
+            font-size: 1em;
+            color: #666;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .nav-button.prev {
+            left: 10px;
+        }
+        .nav-button.next {
+            right: 10px;
+        }
+        @media (min-width: 768px) {
+            .card {
+                flex: 0 0 calc(50% - 40px);
+            }
+        }
+        @media (min-width: 1024px) {
+            .card {
+                flex: 0 0 calc(33.333% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-title">Webyapar Project</h1>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="WhatsApp Image 2024-09-04 at 13.39.36_27e29100.jpg"  class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Pk</h2>
+                    <p class="card-description">Konidala Pawan Kalyan (born 2 September 1971)[2] is an Indian politician, actor and philanthropist, serving as the 10th Deputy Chief Minister of Andhra Pradesh since June 2024.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="WhatsApp Image 2024-09-04 at 13.39.36_27e29100.jpg"  class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Pk</h2>
+                    <p class="card-description">Konidala Pawan Kalyan (born 2 September 1971)[2] is an Indian politician, actor and philanthropist, serving as the 10th Deputy Chief Minister of Andhra Pradesh since June 2024.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="WhatsApp Image 2024-09-04 at 13.39.36_27e29100.jpg"  class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Pk</h2>
+                    <p class="card-description">Konidala Pawan Kalyan (born 2 September 1971)[2] is an Indian politician, actor and philanthropist, serving as the 10th Deputy Chief Minister of Andhra Pradesh since June 2024.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="WhatsApp Image 2024-09-04 at 13.39.36_27e29100.jpg"  class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Pk</h2>
+                    <p class="card-description"> Konidala Pawan Kalyan (born 2 September 1971)[2] is an Indian politician, actor and philanthropist, serving as the 10th Deputy Chief Minister of Andhra Pradesh since June 2024.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="WhatsApp Image 2024-09-04 at 13.39.36_27e29100.jpg"  class="card-image">
+                <div class="card-content">
+                    <h2 class="card-title">Pk</h2>
+                    <p class="card-description">Konidala Pawan Kalyan (born 2 September 1971)[2] is an Indian politician, actor and philanthropist, serving as the 10th Deputy Chief Minister of Andhra Pradesh since June 2024.</p>
+                </div>
+            </div>
+        </div>
+        <button class="nav-button prev" onclick="navigate(-1)">&#10094;</button>
+        <button class="nav-button next" onclick="navigate(1)">&#10095;</button>
+    </div>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const cardWidth = carousel.querySelector('.card').offsetWidth;
+        let currentIndex = 0;
+
+        function navigate(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > carousel.children.length - 1) currentIndex = carousel.children.length - 1;
+            carousel.scrollTo({
+                left: currentIndex * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
